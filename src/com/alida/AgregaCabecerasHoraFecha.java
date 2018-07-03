@@ -1,8 +1,12 @@
 package com.alida;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Map;
  
+
+
 import com.sonicsw.xq.*;
 
 public class AgregaCabecerasHoraFecha implements XQServiceEx {
@@ -18,6 +22,11 @@ public class AgregaCabecerasHoraFecha implements XQServiceEx {
     private static int s_major = 1;
     private static int s_minor = 0;
     private static int s_buildNumber = 0;
+    private static final String TIME_FORMAT_NOW = "HH:mm:ss";
+    private static final String DATE_FORMAT_NOW = "yyyy-MM-dd";
+    private Calendar cal = Calendar.getInstance();
+	private SimpleDateFormat tsdf = new SimpleDateFormat(TIME_FORMAT_NOW);
+	private SimpleDateFormat dsdf = new SimpleDateFormat(DATE_FORMAT_NOW);
 
     /**
      * Constructor for a AgregaCabecerasHoraFecha
@@ -67,12 +76,12 @@ public class AgregaCabecerasHoraFecha implements XQServiceEx {
 		if (env != null) {
 			XQMessage msg = env.getMessage();
 			try {
-				int iPartCnt = msg.getPartCount();
-				for (int i = 0; i < iPartCnt; i++) {
-					XQPart prt = msg.getPart(i);
+				    XQPart prt = msg.getPart(0);
 					Object content = prt.getContent();
-                    m_xqLog.logInformation("Content at Part [" + i + "]:\n" + content);
-				}
+                    m_xqLog.logInformation("Content at Part [" + 0 + "]:\n" + content);
+                    msg.setHeaderValue("hora_recibido", tsdf.format(cal.getTime()).toString().replace(":", ""));
+                    msg.setHeaderValue("fecha_recibido", dsdf.format(cal.getTime()));
+				
 			} catch (XQMessageException me) {
 				throw new XQServiceException("Exception accessing XQMessage: "
 						+ me.getMessage(), me);
