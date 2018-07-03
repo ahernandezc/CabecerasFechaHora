@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<serviceType xmlns="http://www.sonicsw.com/sonicxq" name="AgregaCabecerasHoraFecha" factoryClass="com.alida.AgregaCabecerasHoraFecha" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sonicsw.com/sonicxq file%3A%2F%2F%2FC%3A%2FAurea%2FCxMessenger2017SP11%2FESB10.0%2Fschema%2FserviceType.xsd">
+	<validParams>
+	</validParams>	
+	<classLoading>
+		<serviceType>
+   	        <classpath_list>
+    	        <classpath>sonicfs:///workspace/CabecerasFechaHora/lib/custom-services-classes.jar</classpath>
+			</classpath_list>
+        </serviceType>
+	</classLoading>
+</serviceType>

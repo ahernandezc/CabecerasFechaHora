@@ -1,0 +1,9 @@
+# Ignorar archivos de eclipse
+.classpath
+.project
+
+# Ignorar clases compiladas
+/bin
+
+# Ignorar archivos sid
+.sid
